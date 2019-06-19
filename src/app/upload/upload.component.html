@@ -1,0 +1,35 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onFormSubmit(categoryForm.value)">
+  <div class="form-group">
+      <label>Category Name</label>
+      <input class="form-control" formControlName ="Name"  placeholder="Enter Product Name">
+     <span *ngIf="!categoryForm.get('Name').valid && categoryForm.get('Name').touched">Product Name is Required</span>
+    </div>
+    <div class="form-group">
+        <label>Category Description</label>
+        <input class="form-control" formControlName ="Description"  placeholder="Enter Category Description">
+       <span *ngIf="!categoryForm.get('Description').valid && categoryForm.get('Name').touched">Description  is Required</span>
+      </div>
+      <div class="form-group">
+          <div class="row">
+              <div class="col-md-6">
+                      <label>Image</label>
+                      <input class="form-control" formControlName ="ImageURL" type="file" (change)="handleFileInput($event.target.files)">
+                     <span *ngIf="!categoryForm.get('ImageURL').valid && categoryForm.get('ImageURL').touched">ImageURL is Required</span>
+                 
+              </div>
+              <div class="col-md-6">
+                  <img [src]="imageUrl" style="width:100px; height:100px;">
+              </div>
+          </div>
+             </div>
+        
+          <div class="form-check">
+              <input type="checkbox" class="form-check-input" formControlName="IsFeatured">
+              <label class="form-check-label" for="exampleCheck1">Is Featured</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" formControlName="IndexPage">
+                <label class="form-check-label" for="exampleCheck1">IndexPage</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+</form>
